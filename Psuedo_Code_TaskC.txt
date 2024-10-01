@@ -1,0 +1,25 @@
+Psuedo Code (REXX)
+Task C
+Product Package Counter
+B. Patterson-Morris
+
+
+* Variables needed*
+items = 0            * number of items scanned *
+size = 2             * Each package contains 2*
+max_case_size = 50   * Max ‘size’ per case *
+
+* Start program and explain happenings *
+say "Packages being scanned and sorted into cases…”
+
+* Calculate and list size/items *
+do items = size to max_case_size by size
+    say "Scanned: "items" products"
+    
+* If the scanned items reach max case size, print case full */
+    if items = max_case_size then
+        say "The case is now full of "items" products."
+    end
+end
+
+say "Complete”
