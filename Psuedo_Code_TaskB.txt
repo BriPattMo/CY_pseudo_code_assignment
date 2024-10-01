@@ -1,0 +1,62 @@
+Psuedo Code (REXX)
+Task B
+Find the Spot
+B. Patterson-Morris
+
+* Figure Vars needed for program *
+size = 10                         * Size of the warehouse*
+position = [5, 5]            * Starting position of the customer (middle)*
+destination = [8, 2]      * Location the customer needs to reach *
+
+* Introduce warehouse and instructions *
+say "Warehouse is a ‘size ‘  x  ‘ size ‘ grid."
+say "You can move: North (N), South (S), East (E), or West (W)."
+
+* Function to display current position *
+displayPosition:
+    say "Your current position is: (‘position[1] ‘ , ’position[2]’ )"
+    say "Destination is: (‘destination[1]’ , ‘destination[2]‘) "
+    return
+
+* Function to check if destination reached*
+checkDestination:
+    if position[1] = destination[1] & position[2] = destination[2] then
+        say "You have reached the destination!"
+        exit
+    return
+
+* Main Loop until Destination is reached *
+do forever
+    call position
+
+    * Get input for move *
+    say "Enter direction to move (N, S, E, W): "
+    parse pull direction
+
+    * Update position based on input *
+    if direction = "N" then
+        if position[1] > 1 then
+            position[1] = position[1] - 1
+        else
+            say "You can't move further North."
+    else if direction = "S" then
+        if position[1] < size then
+            position[1] = position[1] + 1
+        else
+            say "You can't move further South."
+    else if direction = "E" then
+        if position[2] < size then
+            position[2] = position[2] + 1
+        else
+            say "You can't move further East."
+    else if direction = "W" then
+        if position[2] > 1 then
+            position[2] = position[2] - 1
+        else
+            say "You can't move further West."
+    else
+        say "Please enter N, S, E, or W."
+
+    * Check if destination reached *
+    call checkDestination
+end

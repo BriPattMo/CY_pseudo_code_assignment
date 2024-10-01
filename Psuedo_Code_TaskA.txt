@@ -1,0 +1,48 @@
+Psuedo Code (REXX)
+Task A
+Guess the Number Game
+B. Patterson-Morris
+
+
+* Invoke option for Random function *
+CALL RANDOMIZE
+
+* Generate number between 1 and 15 *
+random_number = RANDOM(1, 15)
+
+* Set number of chances to pick correct number * 
+chances = 3
+
+* Create container to track correct guesses *
+correct_guess = 0 
+
+* Loop for guessing up to 3 times and get user input and place in container *
+DO WHILE chances > 0
+    SAY "Pick a number between 1 and 15:"
+    PARSE PULL guess
+
+    * Convert guess to a number in case entered as char*
+    guess = NUM(guess)
+
+    * Check if guess is correct *
+    IF guess = random_number THEN DO
+        SAY "You guessed the correct number!"
+        correct_guess = 1
+        LEAVE
+    END
+
+    * If incorrect guess *
+    ELSE DO
+        chances = chances - 1
+        IF chances > 0 THEN
+            SAY "Incorrect. You have "chances " chances left."
+        ELSE
+            SAY "You've run out of chances. The number was "random_number ". "
+    END
+END
+
+* End of game if correct number is not guessed in allotted chances *
+IF correct_guess = 0 THEN
+    SAY "Maybe next time!"
+SAY "Game over."
+
